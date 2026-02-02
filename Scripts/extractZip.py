@@ -1,4 +1,4 @@
-# extractZIP.py
+# extractZip.py
 # Extracts contents of all zipped folders in the source directory
 # For imagery, used when full resolution images are downloaded as zipped folders
 # User must set the source and destination folder paths
