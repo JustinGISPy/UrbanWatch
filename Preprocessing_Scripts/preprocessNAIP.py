@@ -1,5 +1,5 @@
 # preprocessNAIP.py
-# Reorders NAIP image bands to red false color composite
+# Reorders NAIP image bands to color infrared (CIR), also called a red false color composite
 #   >   Valid for imagery from 2009 or later (with NIR band)
 # Resamples the image to 1-meter resolution
 # User must set the source and destination directories
@@ -18,8 +18,8 @@ dest_folder = r"REPLACE-WITH-PATH-TO-DESTINATION-FOLDER"
 # Ensure the destination folder exists
 os.makedirs(dest_folder, exist_ok=True)
 
-# Set the band order for false color composite ([NIR, Red, Green])
-fcc_bands = [4, 3, 2]  
+# Set the band order for CIR image ([NIR, Red, Green])
+cir_bands = [4, 3, 2]  
 
 # Set the new resolution in meters
 new_resolution = 1
@@ -48,9 +48,9 @@ for file in os.listdir(src_folder):
                 new_width, new_height
             )
 
-            # Read and reorder bands for false color composite
+            # Read and reorder bands for CIR image
             bands = []
-            for band_idx in fcc_bands:
+            for band_idx in cir_bands:
                 band_data = src.read(band_idx)
                 bands.append(band_data)
 
