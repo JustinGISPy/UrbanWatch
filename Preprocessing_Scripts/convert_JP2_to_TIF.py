@@ -23,6 +23,11 @@ for file_name in os.listdir(input_folder):
         tif_name = os.path.splitext(file_name)[0] + ".tif"
         tif_path = os.path.join(output_folder, tif_name)
 
+        # Skip conversion if output already exists
+        if os.path.exists(tif_path):
+            print(f"Skipping existing file: {tif_path}")
+            continue
+
         # Open the JP2 file and convert it to a TIF file
         with rasterio.open(jp2_path) as src:
             rio_shutil.copy(src, tif_path, driver="GTiff")
